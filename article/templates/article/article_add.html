@@ -1,0 +1,31 @@
+{% extends "article/base.html" %}
+{% block title %}
+    增加商品
+{% endblock %}
+{% block content %}
+    <form action="" method="post" class="user" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" name="art_title" placeholder="文章标题"
+                   class="form-control form-control-user">
+        </div>
+        <div class="form-group">
+            <input type="text" name="art_date" placeholder="文章时间"
+                   class="form-control form-control-user">
+        </div>
+        <div class="form-group">
+            <input type="text" name="art_content" placeholder="文章内容"
+                   class="form-control form-control-user">
+        </div>
+        <div class="form-group">
+            <input type="text" name="art_des" placeholder="文章描述"
+                   class="form-control form-control-user">
+        </div>
+
+        <div class="form-group">
+            上传图片：<input type="file" name="picture">
+        </div>
+        <input class="btn btn-primary btn-user btn-block" type="submit"
+               value="上传内容">
+    </form>
+{% endblock%}

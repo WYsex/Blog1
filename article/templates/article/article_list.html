@@ -1,0 +1,54 @@
+{% extends  "article/base.html" %}
+{% block title %}
+    商品
+{% endblock %}
+{% block lable %}
+    商品列表
+    <a href="/article/article_add/">增加商品</a>
+{% endblock %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>文章标题</th>
+            <th>文章日期</th>
+            <th>文章内容</th>
+            <th>文章描述</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for one in art_list %}
+            <tr>
+                <th>{{ one.art_title }}</th>
+                <th>{{ one.art_date }}</th>
+                <th>{{ one.art_content }}</th>
+                <th>{{ one.art_des }}</th>
+                <th>
+                    <button class="btn btn-primary">修改</button>
+                    {% if one.art_status == 1 %}
+                        <a href="/article/art_status/down/{{ one.id }}" type="button" class="btn btn-warning">下架</a>
+                    {% else %}
+                        <a href="/article/art_status/up/{{ one.id }}" type="button" class="btn btn-warning">上架</a>
+                    {% endif %}
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+    <ul style="float:right; margin-right:50px" class="pagination ">
+        {% for one in art_all.page_range %}
+            <li class="paginate_button page-item previous">
+                {% if status == "1" %}
+                    <a href="/article_list/1/{{ one }}" class="page-link">{{ one }}</a>
+                {% else %}
+                    <a href="/article_list/0/{{ one }}" class="page-link">{{ one }}</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
